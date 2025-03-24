@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 364df4398afe01c4cbbe3bc100bcfcde
+timeCreated: 1551206140
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 140717
+  packageName: Flat Textures Pack
+  packageVersion: 1.0
+  assetPath: Assets/Flat Textures Pack/Materials/Cave_Spores.mat
+  uploadId: 296724
