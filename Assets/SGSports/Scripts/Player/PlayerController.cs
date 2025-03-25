@@ -7,6 +7,7 @@ namespace SGSPorts.Player
     {
         [SerializeField] private Rigidbody rb;
         [SerializeField] private float speed = 5f;
+        [SerializeField] private int playerId = 1;
         private InputManager input;
 
         private void Awake()
@@ -16,7 +17,7 @@ namespace SGSPorts.Player
 
         private void Update()
         {
-            PlayerMove(input.GetPlayerMovementVector().x * transform.right + input.GetPlayerMovementVector().y * transform.forward, speed);
+            PlayerMove(input.GetPlayerMovementVector(playerId).x * transform.right + input.GetPlayerMovementVector(playerId).y * transform.forward, speed);
         }
 
         private void PlayerMove(Vector3 direction, float moveSpeed)

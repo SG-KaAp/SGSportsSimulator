@@ -19,9 +19,12 @@ namespace SGSports.System
             input.Disable();
         }
 
-        public Vector2 GetPlayerMovementVector()
+        public Vector2 GetPlayerMovementVector(int playerId = 1)
         {
-            return input.Player.MovementVector.ReadValue<Vector2>();
+            if (playerId == 1)
+                return input.Player.MovementVector.ReadValue<Vector2>();
+            else
+                return input.Player2.MovementVector.ReadValue<Vector2>();
         }
     }
 }
