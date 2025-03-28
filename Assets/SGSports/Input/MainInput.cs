@@ -386,7 +386,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Player2"",
+            ""name"": ""PlayerAlt"",
             ""id"": ""ced2e096-93f5-4364-ae2e-8998481f28c9"",
             ""actions"": [
                 {
@@ -1394,18 +1394,18 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_EspaceButton = m_Player.FindAction("EspaceButton", throwIfNotFound: true);
-        // Player2
-        m_Player2 = asset.FindActionMap("Player2", throwIfNotFound: true);
-        m_Player2_MovementVector = m_Player2.FindAction("MovementVector", throwIfNotFound: true);
-        m_Player2_CameraLook = m_Player2.FindAction("CameraLook", throwIfNotFound: true);
-        m_Player2_Jump = m_Player2.FindAction("Jump", throwIfNotFound: true);
-        m_Player2_Sprint = m_Player2.FindAction("Sprint", throwIfNotFound: true);
-        m_Player2_Crouch = m_Player2.FindAction("Crouch", throwIfNotFound: true);
-        m_Player2_Attack1 = m_Player2.FindAction("Attack1", throwIfNotFound: true);
-        m_Player2_Reload = m_Player2.FindAction("Reload", throwIfNotFound: true);
-        m_Player2_Use = m_Player2.FindAction("Use", throwIfNotFound: true);
-        m_Player2_Inventory = m_Player2.FindAction("Inventory", throwIfNotFound: true);
-        m_Player2_EspaceButton = m_Player2.FindAction("EspaceButton", throwIfNotFound: true);
+        // PlayerAlt
+        m_PlayerAlt = asset.FindActionMap("PlayerAlt", throwIfNotFound: true);
+        m_PlayerAlt_MovementVector = m_PlayerAlt.FindAction("MovementVector", throwIfNotFound: true);
+        m_PlayerAlt_CameraLook = m_PlayerAlt.FindAction("CameraLook", throwIfNotFound: true);
+        m_PlayerAlt_Jump = m_PlayerAlt.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerAlt_Sprint = m_PlayerAlt.FindAction("Sprint", throwIfNotFound: true);
+        m_PlayerAlt_Crouch = m_PlayerAlt.FindAction("Crouch", throwIfNotFound: true);
+        m_PlayerAlt_Attack1 = m_PlayerAlt.FindAction("Attack1", throwIfNotFound: true);
+        m_PlayerAlt_Reload = m_PlayerAlt.FindAction("Reload", throwIfNotFound: true);
+        m_PlayerAlt_Use = m_PlayerAlt.FindAction("Use", throwIfNotFound: true);
+        m_PlayerAlt_Inventory = m_PlayerAlt.FindAction("Inventory", throwIfNotFound: true);
+        m_PlayerAlt_EspaceButton = m_PlayerAlt.FindAction("EspaceButton", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1429,7 +1429,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
     ~@MainInput()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, MainInput.Player.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_Player2.enabled, "This will cause a leak and performance issues, MainInput.Player2.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayerAlt.enabled, "This will cause a leak and performance issues, MainInput.PlayerAlt.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, MainInput.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Developer.enabled, "This will cause a leak and performance issues, MainInput.Developer.Disable() has not been called.");
     }
@@ -1608,42 +1608,42 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
     }
     public PlayerActions @Player => new PlayerActions(this);
 
-    // Player2
-    private readonly InputActionMap m_Player2;
-    private List<IPlayer2Actions> m_Player2ActionsCallbackInterfaces = new List<IPlayer2Actions>();
-    private readonly InputAction m_Player2_MovementVector;
-    private readonly InputAction m_Player2_CameraLook;
-    private readonly InputAction m_Player2_Jump;
-    private readonly InputAction m_Player2_Sprint;
-    private readonly InputAction m_Player2_Crouch;
-    private readonly InputAction m_Player2_Attack1;
-    private readonly InputAction m_Player2_Reload;
-    private readonly InputAction m_Player2_Use;
-    private readonly InputAction m_Player2_Inventory;
-    private readonly InputAction m_Player2_EspaceButton;
-    public struct Player2Actions
+    // PlayerAlt
+    private readonly InputActionMap m_PlayerAlt;
+    private List<IPlayerAltActions> m_PlayerAltActionsCallbackInterfaces = new List<IPlayerAltActions>();
+    private readonly InputAction m_PlayerAlt_MovementVector;
+    private readonly InputAction m_PlayerAlt_CameraLook;
+    private readonly InputAction m_PlayerAlt_Jump;
+    private readonly InputAction m_PlayerAlt_Sprint;
+    private readonly InputAction m_PlayerAlt_Crouch;
+    private readonly InputAction m_PlayerAlt_Attack1;
+    private readonly InputAction m_PlayerAlt_Reload;
+    private readonly InputAction m_PlayerAlt_Use;
+    private readonly InputAction m_PlayerAlt_Inventory;
+    private readonly InputAction m_PlayerAlt_EspaceButton;
+    public struct PlayerAltActions
     {
         private @MainInput m_Wrapper;
-        public Player2Actions(@MainInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MovementVector => m_Wrapper.m_Player2_MovementVector;
-        public InputAction @CameraLook => m_Wrapper.m_Player2_CameraLook;
-        public InputAction @Jump => m_Wrapper.m_Player2_Jump;
-        public InputAction @Sprint => m_Wrapper.m_Player2_Sprint;
-        public InputAction @Crouch => m_Wrapper.m_Player2_Crouch;
-        public InputAction @Attack1 => m_Wrapper.m_Player2_Attack1;
-        public InputAction @Reload => m_Wrapper.m_Player2_Reload;
-        public InputAction @Use => m_Wrapper.m_Player2_Use;
-        public InputAction @Inventory => m_Wrapper.m_Player2_Inventory;
-        public InputAction @EspaceButton => m_Wrapper.m_Player2_EspaceButton;
-        public InputActionMap Get() { return m_Wrapper.m_Player2; }
+        public PlayerAltActions(@MainInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MovementVector => m_Wrapper.m_PlayerAlt_MovementVector;
+        public InputAction @CameraLook => m_Wrapper.m_PlayerAlt_CameraLook;
+        public InputAction @Jump => m_Wrapper.m_PlayerAlt_Jump;
+        public InputAction @Sprint => m_Wrapper.m_PlayerAlt_Sprint;
+        public InputAction @Crouch => m_Wrapper.m_PlayerAlt_Crouch;
+        public InputAction @Attack1 => m_Wrapper.m_PlayerAlt_Attack1;
+        public InputAction @Reload => m_Wrapper.m_PlayerAlt_Reload;
+        public InputAction @Use => m_Wrapper.m_PlayerAlt_Use;
+        public InputAction @Inventory => m_Wrapper.m_PlayerAlt_Inventory;
+        public InputAction @EspaceButton => m_Wrapper.m_PlayerAlt_EspaceButton;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerAlt; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(Player2Actions set) { return set.Get(); }
-        public void AddCallbacks(IPlayer2Actions instance)
+        public static implicit operator InputActionMap(PlayerAltActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerAltActions instance)
         {
-            if (instance == null || m_Wrapper.m_Player2ActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_Player2ActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PlayerAltActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerAltActionsCallbackInterfaces.Add(instance);
             @MovementVector.started += instance.OnMovementVector;
             @MovementVector.performed += instance.OnMovementVector;
             @MovementVector.canceled += instance.OnMovementVector;
@@ -1676,7 +1676,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @EspaceButton.canceled += instance.OnEspaceButton;
         }
 
-        private void UnregisterCallbacks(IPlayer2Actions instance)
+        private void UnregisterCallbacks(IPlayerAltActions instance)
         {
             @MovementVector.started -= instance.OnMovementVector;
             @MovementVector.performed -= instance.OnMovementVector;
@@ -1710,21 +1710,21 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @EspaceButton.canceled -= instance.OnEspaceButton;
         }
 
-        public void RemoveCallbacks(IPlayer2Actions instance)
+        public void RemoveCallbacks(IPlayerAltActions instance)
         {
-            if (m_Wrapper.m_Player2ActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PlayerAltActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IPlayer2Actions instance)
+        public void SetCallbacks(IPlayerAltActions instance)
         {
-            foreach (var item in m_Wrapper.m_Player2ActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PlayerAltActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_Player2ActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PlayerAltActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public Player2Actions @Player2 => new Player2Actions(this);
+    public PlayerAltActions @PlayerAlt => new PlayerAltActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1944,7 +1944,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnEspaceButton(InputAction.CallbackContext context);
     }
-    public interface IPlayer2Actions
+    public interface IPlayerAltActions
     {
         void OnMovementVector(InputAction.CallbackContext context);
         void OnCameraLook(InputAction.CallbackContext context);

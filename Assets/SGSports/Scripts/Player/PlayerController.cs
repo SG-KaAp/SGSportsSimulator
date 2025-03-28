@@ -8,18 +8,21 @@ namespace SGSPorts.Player
         [SerializeField] private Rigidbody rb;
         [SerializeField] private float speed = 5f;
         [SerializeField] private int playerId = 1;
-        private InputManager input;
-
-        private void Awake()
-        {
-            input = FindAnyObjectByType<InputManager>();
-        }
-
         private void Update()
         {
-            PlayerMove(input.GetPlayerMovementVector(playerId).x * transform.right + input.GetPlayerMovementVector(playerId).y * transform.forward, speed);
+            if (playerId == 1)
+            {
+                PlayerMove(
+                    InputHandler.PlayerActions.MovementVector.ReadValue<Vector2>().x * transform.right +
+                    InputHandler.PlayerActions.MovementVector.ReadValue<Vector2>().y * transform.forward, speed);
+            }
+            else
+            {
+                PlayerMove(
+                    InputHandler.PlayerAltActions.MovementVector.ReadValue<Vector2>().x * transform.right +
+                    InputHandler.PlayerAltActions.MovementVector.ReadValue<Vector2>().y * transform.forward, speed);
+            }
         }
-
         private void PlayerMove(Vector3 direction, float moveSpeed)
         {
             rb.linearVelocity = direction * moveSpeed + rb.linearVelocity.y * transform.up;

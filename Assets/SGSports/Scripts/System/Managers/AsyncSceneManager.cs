@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace SGSports.System
 {
-    public class AsyncSceneManager : Manager
+    public class AsyncSceneManager : MonoBehaviour
     {
         private AsyncOperation level;
         public void AsyncSceneLoad(string sceneName)
