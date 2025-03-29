@@ -13,14 +13,14 @@ namespace SGSPorts.Player
             if (playerId == 1)
             {
                 PlayerMove(
-                    InputHandler.PlayerActions.MovementVector.ReadValue<Vector2>().x * transform.right +
-                    InputHandler.PlayerActions.MovementVector.ReadValue<Vector2>().y * transform.forward, speed);
+                    InputHandler.FootballActions.MovementVector.ReadValue<Vector2>().x * transform.right +
+                    InputHandler.FootballActions.MovementVector.ReadValue<Vector2>().y * transform.forward, speed);
             }
             else
             {
                 PlayerMove(
-                    InputHandler.PlayerAltActions.MovementVector.ReadValue<Vector2>().x * transform.right +
-                    InputHandler.PlayerAltActions.MovementVector.ReadValue<Vector2>().y * transform.forward, speed);
+                    InputHandler.FootballAltActions.MovementVector.ReadValue<Vector2>().x * transform.right +
+                    InputHandler.FootballAltActions.MovementVector.ReadValue<Vector2>().y * transform.forward, speed);
             }
         }
         private void PlayerMove(Vector3 direction, float moveSpeed)

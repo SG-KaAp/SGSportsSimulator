@@ -217,8 +217,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218860309}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12831831, y: 0.71410424, z: -0.13582419, w: 0.67464167}
-  m_LocalPosition: {x: 50, y: 12, z: 80}
+  m_LocalRotation: {x: -0.05308047, y: 0.9375899, z: -0.16512115, w: -0.30140117}
+  m_LocalPosition: {x: 90.5, y: 12, z: 100.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1127,8 +1127,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916072567}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12831831, y: 0.71410424, z: -0.13582417, w: 0.67464167}
-  m_LocalPosition: {x: 50, y: 12, z: 80}
+  m_LocalRotation: {x: -0.053080462, y: 0.9375899, z: -0.16512117, w: -0.30140117}
+  m_LocalPosition: {x: 90.5, y: 12, z: 100.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1236,6 +1236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7847e483fff369fee862faa132f18708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingProgressText: {fileID: 0}
+  nextScene: 
 --- !u!1 &1974162773
 GameObject:
   m_ObjectHideFlags: 0

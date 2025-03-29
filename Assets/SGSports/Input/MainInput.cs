@@ -24,7 +24,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
     ""name"": ""MainInput"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""Football"",
             ""id"": ""322dc9a8-ac7c-464f-b3ad-db0b349d1f54"",
             ""actions"": [
                 {
@@ -386,7 +386,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""PlayerAlt"",
+            ""name"": ""FootballAlt"",
             ""id"": ""ced2e096-93f5-4364-ae2e-8998481f28c9"",
             ""actions"": [
                 {
@@ -742,6 +742,84 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Tennis"",
+            ""id"": ""dd798d29-bb25-4a0a-bbc8-3b11e372872f"",
+            ""actions"": [
+                {
+                    ""name"": ""MovementVector"",
+                    ""type"": ""Value"",
+                    ""id"": ""425db4f1-7d7d-47ab-a60d-07fca04454a8"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""413874ce-9716-4ae6-a3f5-bc908c53eda5"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovementVector"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""ba981091-fe68-4c5e-845b-9e6afdb80174"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardAndMouse"",
+                    ""action"": ""MovementVector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""8047556c-6dc8-4c67-a80b-ba739ac40cd9"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardAndMouse"",
+                    ""action"": ""MovementVector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""TennisAlt"",
+            ""id"": ""699d2db1-dda1-4aaa-bf15-d5981fbf6095"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""4f8dd71a-575d-4590-8b20-c52a7dcf880b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""181614fc-4c53-4d5b-91f4-a8c0d2f18391"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1382,30 +1460,36 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_MovementVector = m_Player.FindAction("MovementVector", throwIfNotFound: true);
-        m_Player_CameraLook = m_Player.FindAction("CameraLook", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-        m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
-        m_Player_Attack1 = m_Player.FindAction("Attack1", throwIfNotFound: true);
-        m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
-        m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
-        m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
-        m_Player_EspaceButton = m_Player.FindAction("EspaceButton", throwIfNotFound: true);
-        // PlayerAlt
-        m_PlayerAlt = asset.FindActionMap("PlayerAlt", throwIfNotFound: true);
-        m_PlayerAlt_MovementVector = m_PlayerAlt.FindAction("MovementVector", throwIfNotFound: true);
-        m_PlayerAlt_CameraLook = m_PlayerAlt.FindAction("CameraLook", throwIfNotFound: true);
-        m_PlayerAlt_Jump = m_PlayerAlt.FindAction("Jump", throwIfNotFound: true);
-        m_PlayerAlt_Sprint = m_PlayerAlt.FindAction("Sprint", throwIfNotFound: true);
-        m_PlayerAlt_Crouch = m_PlayerAlt.FindAction("Crouch", throwIfNotFound: true);
-        m_PlayerAlt_Attack1 = m_PlayerAlt.FindAction("Attack1", throwIfNotFound: true);
-        m_PlayerAlt_Reload = m_PlayerAlt.FindAction("Reload", throwIfNotFound: true);
-        m_PlayerAlt_Use = m_PlayerAlt.FindAction("Use", throwIfNotFound: true);
-        m_PlayerAlt_Inventory = m_PlayerAlt.FindAction("Inventory", throwIfNotFound: true);
-        m_PlayerAlt_EspaceButton = m_PlayerAlt.FindAction("EspaceButton", throwIfNotFound: true);
+        // Football
+        m_Football = asset.FindActionMap("Football", throwIfNotFound: true);
+        m_Football_MovementVector = m_Football.FindAction("MovementVector", throwIfNotFound: true);
+        m_Football_CameraLook = m_Football.FindAction("CameraLook", throwIfNotFound: true);
+        m_Football_Jump = m_Football.FindAction("Jump", throwIfNotFound: true);
+        m_Football_Sprint = m_Football.FindAction("Sprint", throwIfNotFound: true);
+        m_Football_Crouch = m_Football.FindAction("Crouch", throwIfNotFound: true);
+        m_Football_Attack1 = m_Football.FindAction("Attack1", throwIfNotFound: true);
+        m_Football_Reload = m_Football.FindAction("Reload", throwIfNotFound: true);
+        m_Football_Use = m_Football.FindAction("Use", throwIfNotFound: true);
+        m_Football_Inventory = m_Football.FindAction("Inventory", throwIfNotFound: true);
+        m_Football_EspaceButton = m_Football.FindAction("EspaceButton", throwIfNotFound: true);
+        // FootballAlt
+        m_FootballAlt = asset.FindActionMap("FootballAlt", throwIfNotFound: true);
+        m_FootballAlt_MovementVector = m_FootballAlt.FindAction("MovementVector", throwIfNotFound: true);
+        m_FootballAlt_CameraLook = m_FootballAlt.FindAction("CameraLook", throwIfNotFound: true);
+        m_FootballAlt_Jump = m_FootballAlt.FindAction("Jump", throwIfNotFound: true);
+        m_FootballAlt_Sprint = m_FootballAlt.FindAction("Sprint", throwIfNotFound: true);
+        m_FootballAlt_Crouch = m_FootballAlt.FindAction("Crouch", throwIfNotFound: true);
+        m_FootballAlt_Attack1 = m_FootballAlt.FindAction("Attack1", throwIfNotFound: true);
+        m_FootballAlt_Reload = m_FootballAlt.FindAction("Reload", throwIfNotFound: true);
+        m_FootballAlt_Use = m_FootballAlt.FindAction("Use", throwIfNotFound: true);
+        m_FootballAlt_Inventory = m_FootballAlt.FindAction("Inventory", throwIfNotFound: true);
+        m_FootballAlt_EspaceButton = m_FootballAlt.FindAction("EspaceButton", throwIfNotFound: true);
+        // Tennis
+        m_Tennis = asset.FindActionMap("Tennis", throwIfNotFound: true);
+        m_Tennis_MovementVector = m_Tennis.FindAction("MovementVector", throwIfNotFound: true);
+        // TennisAlt
+        m_TennisAlt = asset.FindActionMap("TennisAlt", throwIfNotFound: true);
+        m_TennisAlt_Newaction = m_TennisAlt.FindAction("New action", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1428,8 +1512,10 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
 
     ~@MainInput()
     {
-        UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, MainInput.Player.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_PlayerAlt.enabled, "This will cause a leak and performance issues, MainInput.PlayerAlt.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Football.enabled, "This will cause a leak and performance issues, MainInput.Football.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_FootballAlt.enabled, "This will cause a leak and performance issues, MainInput.FootballAlt.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Tennis.enabled, "This will cause a leak and performance issues, MainInput.Tennis.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_TennisAlt.enabled, "This will cause a leak and performance issues, MainInput.TennisAlt.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, MainInput.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Developer.enabled, "This will cause a leak and performance issues, MainInput.Developer.Disable() has not been called.");
     }
@@ -1490,42 +1576,42 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_MovementVector;
-    private readonly InputAction m_Player_CameraLook;
-    private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Sprint;
-    private readonly InputAction m_Player_Crouch;
-    private readonly InputAction m_Player_Attack1;
-    private readonly InputAction m_Player_Reload;
-    private readonly InputAction m_Player_Use;
-    private readonly InputAction m_Player_Inventory;
-    private readonly InputAction m_Player_EspaceButton;
-    public struct PlayerActions
+    // Football
+    private readonly InputActionMap m_Football;
+    private List<IFootballActions> m_FootballActionsCallbackInterfaces = new List<IFootballActions>();
+    private readonly InputAction m_Football_MovementVector;
+    private readonly InputAction m_Football_CameraLook;
+    private readonly InputAction m_Football_Jump;
+    private readonly InputAction m_Football_Sprint;
+    private readonly InputAction m_Football_Crouch;
+    private readonly InputAction m_Football_Attack1;
+    private readonly InputAction m_Football_Reload;
+    private readonly InputAction m_Football_Use;
+    private readonly InputAction m_Football_Inventory;
+    private readonly InputAction m_Football_EspaceButton;
+    public struct FootballActions
     {
         private @MainInput m_Wrapper;
-        public PlayerActions(@MainInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MovementVector => m_Wrapper.m_Player_MovementVector;
-        public InputAction @CameraLook => m_Wrapper.m_Player_CameraLook;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
-        public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
-        public InputAction @Attack1 => m_Wrapper.m_Player_Attack1;
-        public InputAction @Reload => m_Wrapper.m_Player_Reload;
-        public InputAction @Use => m_Wrapper.m_Player_Use;
-        public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
-        public InputAction @EspaceButton => m_Wrapper.m_Player_EspaceButton;
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public FootballActions(@MainInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MovementVector => m_Wrapper.m_Football_MovementVector;
+        public InputAction @CameraLook => m_Wrapper.m_Football_CameraLook;
+        public InputAction @Jump => m_Wrapper.m_Football_Jump;
+        public InputAction @Sprint => m_Wrapper.m_Football_Sprint;
+        public InputAction @Crouch => m_Wrapper.m_Football_Crouch;
+        public InputAction @Attack1 => m_Wrapper.m_Football_Attack1;
+        public InputAction @Reload => m_Wrapper.m_Football_Reload;
+        public InputAction @Use => m_Wrapper.m_Football_Use;
+        public InputAction @Inventory => m_Wrapper.m_Football_Inventory;
+        public InputAction @EspaceButton => m_Wrapper.m_Football_EspaceButton;
+        public InputActionMap Get() { return m_Wrapper.m_Football; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void AddCallbacks(IPlayerActions instance)
+        public static implicit operator InputActionMap(FootballActions set) { return set.Get(); }
+        public void AddCallbacks(IFootballActions instance)
         {
-            if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_FootballActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_FootballActionsCallbackInterfaces.Add(instance);
             @MovementVector.started += instance.OnMovementVector;
             @MovementVector.performed += instance.OnMovementVector;
             @MovementVector.canceled += instance.OnMovementVector;
@@ -1558,7 +1644,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @EspaceButton.canceled += instance.OnEspaceButton;
         }
 
-        private void UnregisterCallbacks(IPlayerActions instance)
+        private void UnregisterCallbacks(IFootballActions instance)
         {
             @MovementVector.started -= instance.OnMovementVector;
             @MovementVector.performed -= instance.OnMovementVector;
@@ -1592,58 +1678,58 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @EspaceButton.canceled -= instance.OnEspaceButton;
         }
 
-        public void RemoveCallbacks(IPlayerActions instance)
+        public void RemoveCallbacks(IFootballActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_FootballActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IPlayerActions instance)
+        public void SetCallbacks(IFootballActions instance)
         {
-            foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_FootballActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_FootballActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
+    public FootballActions @Football => new FootballActions(this);
 
-    // PlayerAlt
-    private readonly InputActionMap m_PlayerAlt;
-    private List<IPlayerAltActions> m_PlayerAltActionsCallbackInterfaces = new List<IPlayerAltActions>();
-    private readonly InputAction m_PlayerAlt_MovementVector;
-    private readonly InputAction m_PlayerAlt_CameraLook;
-    private readonly InputAction m_PlayerAlt_Jump;
-    private readonly InputAction m_PlayerAlt_Sprint;
-    private readonly InputAction m_PlayerAlt_Crouch;
-    private readonly InputAction m_PlayerAlt_Attack1;
-    private readonly InputAction m_PlayerAlt_Reload;
-    private readonly InputAction m_PlayerAlt_Use;
-    private readonly InputAction m_PlayerAlt_Inventory;
-    private readonly InputAction m_PlayerAlt_EspaceButton;
-    public struct PlayerAltActions
+    // FootballAlt
+    private readonly InputActionMap m_FootballAlt;
+    private List<IFootballAltActions> m_FootballAltActionsCallbackInterfaces = new List<IFootballAltActions>();
+    private readonly InputAction m_FootballAlt_MovementVector;
+    private readonly InputAction m_FootballAlt_CameraLook;
+    private readonly InputAction m_FootballAlt_Jump;
+    private readonly InputAction m_FootballAlt_Sprint;
+    private readonly InputAction m_FootballAlt_Crouch;
+    private readonly InputAction m_FootballAlt_Attack1;
+    private readonly InputAction m_FootballAlt_Reload;
+    private readonly InputAction m_FootballAlt_Use;
+    private readonly InputAction m_FootballAlt_Inventory;
+    private readonly InputAction m_FootballAlt_EspaceButton;
+    public struct FootballAltActions
     {
         private @MainInput m_Wrapper;
-        public PlayerAltActions(@MainInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MovementVector => m_Wrapper.m_PlayerAlt_MovementVector;
-        public InputAction @CameraLook => m_Wrapper.m_PlayerAlt_CameraLook;
-        public InputAction @Jump => m_Wrapper.m_PlayerAlt_Jump;
-        public InputAction @Sprint => m_Wrapper.m_PlayerAlt_Sprint;
-        public InputAction @Crouch => m_Wrapper.m_PlayerAlt_Crouch;
-        public InputAction @Attack1 => m_Wrapper.m_PlayerAlt_Attack1;
-        public InputAction @Reload => m_Wrapper.m_PlayerAlt_Reload;
-        public InputAction @Use => m_Wrapper.m_PlayerAlt_Use;
-        public InputAction @Inventory => m_Wrapper.m_PlayerAlt_Inventory;
-        public InputAction @EspaceButton => m_Wrapper.m_PlayerAlt_EspaceButton;
-        public InputActionMap Get() { return m_Wrapper.m_PlayerAlt; }
+        public FootballAltActions(@MainInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MovementVector => m_Wrapper.m_FootballAlt_MovementVector;
+        public InputAction @CameraLook => m_Wrapper.m_FootballAlt_CameraLook;
+        public InputAction @Jump => m_Wrapper.m_FootballAlt_Jump;
+        public InputAction @Sprint => m_Wrapper.m_FootballAlt_Sprint;
+        public InputAction @Crouch => m_Wrapper.m_FootballAlt_Crouch;
+        public InputAction @Attack1 => m_Wrapper.m_FootballAlt_Attack1;
+        public InputAction @Reload => m_Wrapper.m_FootballAlt_Reload;
+        public InputAction @Use => m_Wrapper.m_FootballAlt_Use;
+        public InputAction @Inventory => m_Wrapper.m_FootballAlt_Inventory;
+        public InputAction @EspaceButton => m_Wrapper.m_FootballAlt_EspaceButton;
+        public InputActionMap Get() { return m_Wrapper.m_FootballAlt; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerAltActions set) { return set.Get(); }
-        public void AddCallbacks(IPlayerAltActions instance)
+        public static implicit operator InputActionMap(FootballAltActions set) { return set.Get(); }
+        public void AddCallbacks(IFootballAltActions instance)
         {
-            if (instance == null || m_Wrapper.m_PlayerAltActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerAltActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_FootballAltActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_FootballAltActionsCallbackInterfaces.Add(instance);
             @MovementVector.started += instance.OnMovementVector;
             @MovementVector.performed += instance.OnMovementVector;
             @MovementVector.canceled += instance.OnMovementVector;
@@ -1676,7 +1762,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @EspaceButton.canceled += instance.OnEspaceButton;
         }
 
-        private void UnregisterCallbacks(IPlayerAltActions instance)
+        private void UnregisterCallbacks(IFootballAltActions instance)
         {
             @MovementVector.started -= instance.OnMovementVector;
             @MovementVector.performed -= instance.OnMovementVector;
@@ -1710,21 +1796,113 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @EspaceButton.canceled -= instance.OnEspaceButton;
         }
 
-        public void RemoveCallbacks(IPlayerAltActions instance)
+        public void RemoveCallbacks(IFootballAltActions instance)
         {
-            if (m_Wrapper.m_PlayerAltActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_FootballAltActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IPlayerAltActions instance)
+        public void SetCallbacks(IFootballAltActions instance)
         {
-            foreach (var item in m_Wrapper.m_PlayerAltActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_FootballAltActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerAltActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_FootballAltActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public PlayerAltActions @PlayerAlt => new PlayerAltActions(this);
+    public FootballAltActions @FootballAlt => new FootballAltActions(this);
+
+    // Tennis
+    private readonly InputActionMap m_Tennis;
+    private List<ITennisActions> m_TennisActionsCallbackInterfaces = new List<ITennisActions>();
+    private readonly InputAction m_Tennis_MovementVector;
+    public struct TennisActions
+    {
+        private @MainInput m_Wrapper;
+        public TennisActions(@MainInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MovementVector => m_Wrapper.m_Tennis_MovementVector;
+        public InputActionMap Get() { return m_Wrapper.m_Tennis; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TennisActions set) { return set.Get(); }
+        public void AddCallbacks(ITennisActions instance)
+        {
+            if (instance == null || m_Wrapper.m_TennisActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_TennisActionsCallbackInterfaces.Add(instance);
+            @MovementVector.started += instance.OnMovementVector;
+            @MovementVector.performed += instance.OnMovementVector;
+            @MovementVector.canceled += instance.OnMovementVector;
+        }
+
+        private void UnregisterCallbacks(ITennisActions instance)
+        {
+            @MovementVector.started -= instance.OnMovementVector;
+            @MovementVector.performed -= instance.OnMovementVector;
+            @MovementVector.canceled -= instance.OnMovementVector;
+        }
+
+        public void RemoveCallbacks(ITennisActions instance)
+        {
+            if (m_Wrapper.m_TennisActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ITennisActions instance)
+        {
+            foreach (var item in m_Wrapper.m_TennisActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_TennisActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public TennisActions @Tennis => new TennisActions(this);
+
+    // TennisAlt
+    private readonly InputActionMap m_TennisAlt;
+    private List<ITennisAltActions> m_TennisAltActionsCallbackInterfaces = new List<ITennisAltActions>();
+    private readonly InputAction m_TennisAlt_Newaction;
+    public struct TennisAltActions
+    {
+        private @MainInput m_Wrapper;
+        public TennisAltActions(@MainInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_TennisAlt_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_TennisAlt; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TennisAltActions set) { return set.Get(); }
+        public void AddCallbacks(ITennisAltActions instance)
+        {
+            if (instance == null || m_Wrapper.m_TennisAltActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_TennisAltActionsCallbackInterfaces.Add(instance);
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
+        }
+
+        private void UnregisterCallbacks(ITennisAltActions instance)
+        {
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
+        }
+
+        public void RemoveCallbacks(ITennisAltActions instance)
+        {
+            if (m_Wrapper.m_TennisAltActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ITennisAltActions instance)
+        {
+            foreach (var item in m_Wrapper.m_TennisAltActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_TennisAltActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public TennisAltActions @TennisAlt => new TennisAltActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1931,7 +2109,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
-    public interface IPlayerActions
+    public interface IFootballActions
     {
         void OnMovementVector(InputAction.CallbackContext context);
         void OnCameraLook(InputAction.CallbackContext context);
@@ -1944,7 +2122,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnEspaceButton(InputAction.CallbackContext context);
     }
-    public interface IPlayerAltActions
+    public interface IFootballAltActions
     {
         void OnMovementVector(InputAction.CallbackContext context);
         void OnCameraLook(InputAction.CallbackContext context);
@@ -1956,6 +2134,14 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         void OnUse(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnEspaceButton(InputAction.CallbackContext context);
+    }
+    public interface ITennisActions
+    {
+        void OnMovementVector(InputAction.CallbackContext context);
+    }
+    public interface ITennisAltActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -2,7 +2,7 @@
     "name": "MainInput",
     "maps": [
         {
-            "name": "Player",
+            "name": "Football",
             "id": "322dc9a8-ac7c-464f-b3ad-db0b349d1f54",
             "actions": [
                 {
@@ -364,7 +364,7 @@
             ]
         },
         {
-            "name": "PlayerAlt",
+            "name": "FootballAlt",
             "id": "ced2e096-93f5-4364-ae2e-8998481f28c9",
             "actions": [
                 {
@@ -720,6 +720,84 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Tennis",
+            "id": "dd798d29-bb25-4a0a-bbc8-3b11e372872f",
+            "actions": [
+                {
+                    "name": "MovementVector",
+                    "type": "Value",
+                    "id": "425db4f1-7d7d-47ab-a60d-07fca04454a8",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "413874ce-9716-4ae6-a3f5-bc908c53eda5",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementVector",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "ba981091-fe68-4c5e-845b-9e6afdb80174",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardAndMouse",
+                    "action": "MovementVector",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "8047556c-6dc8-4c67-a80b-ba739ac40cd9",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardAndMouse",
+                    "action": "MovementVector",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "TennisAlt",
+            "id": "699d2db1-dda1-4aaa-bf15-d5981fbf6095",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "4f8dd71a-575d-4590-8b20-c52a7dcf880b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "181614fc-4c53-4d5b-91f4-a8c0d2f18391",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
