@@ -17,7 +17,6 @@ namespace SGSports.System
 
         public static void Initialize()
         {
-            Debug.Log("Initializing InputHandler");
             _input = new MainInput();
             _input.Enable();
             _playerActions = _input.Player;

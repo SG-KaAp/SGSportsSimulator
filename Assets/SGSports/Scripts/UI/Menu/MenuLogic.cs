@@ -1,18 +1,27 @@
 using System;
-using SGSports.System;
 using UnityEngine;
+using DG.Tweening;
 
 namespace SGSports.UI.Menu
 {
     public class MenuLogic : MonoBehaviour
     {
-        private AsyncSceneManager asyncSceneManager;
-
-        private void Awake()
+        [SerializeField] private Transform mainPanel;
+        public void Awake()
         {
-            asyncSceneManager = FindAnyObjectByType<AsyncSceneManager>();
+            MenuMoveIn(mainPanel);
         }
 
-        public void AsyncLoadScene(string sceneName) => asyncSceneManager.AsyncSceneLoad(sceneName);
+        public void MenuMoveIn(Transform transform)
+        {
+            transform.DOMoveX(375, 1.5f);
+        }
+
+        public void MenuMoveOut(Transform transform)
+        {
+            transform.DOMoveX(-375, 1.5f);
+        }
+        public void AsyncLoadScene(string sceneName) => SGSports.System.AsyncSceneManager.AsyncSceneLoad(sceneName);
+        public void ApplicationQuit() => Application.Quit();
     }
 }

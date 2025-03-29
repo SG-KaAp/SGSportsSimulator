@@ -3,13 +3,13 @@ using UnityEngine.SceneManagement;
 
 namespace SGSports.System
 {
-    public class AsyncSceneManager : MonoBehaviour
+    public static class AsyncSceneManager
     {
-        private AsyncOperation level;
-        public void AsyncSceneLoad(string sceneName)
+        private static AsyncOperation _level;
+        public static void AsyncSceneLoad(string sceneName)
         {
-            level = SceneManager.LoadSceneAsync(sceneName);
-            level.allowSceneActivation = true;
+            _level = SceneManager.LoadSceneAsync(sceneName);
+            _level.allowSceneActivation = true;
         }
     }
 }

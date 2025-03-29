@@ -4,10 +4,11 @@ namespace SGSports.System
 {
     public class Bootstrap : MonoBehaviour
     {
+        [SerializeField] private string nextScene;
         private void Start()
         {
             InputHandler.Initialize();
-            //FindFirstObjectByType<AsyncSceneManager>().AsyncSceneLoad("Menu");
+            AsyncSceneManager.AsyncSceneLoad(nextScene);
         }
     }
 }
