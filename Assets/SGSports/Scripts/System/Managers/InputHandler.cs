@@ -5,15 +5,15 @@ namespace SGSports.System
         private static MainInput _input;
         private static MainInput.FootballActions _footballActions;
         private static MainInput.FootballAltActions _footballAltActions;
-        private static MainInput.TennisActions _tennis;
-        private static MainInput.TennisAltActions _tennisAlt;
+        private static MainInput.TennisActions _tennisActions;
+        private static MainInput.TennisAltActions _tennisAltActions;
         private static MainInput.UIActions _uiActions;
         private static MainInput.DeveloperActions _developerActions;
 
         public static MainInput.FootballActions FootballActions => _footballActions;
         public static MainInput.FootballAltActions FootballAltActions => _footballAltActions;
-        public static MainInput.TennisActions TennisActions => _tennis;
-        private static MainInput.TennisAltActions TennisAltActions => _tennisAlt;
+        public static MainInput.TennisActions TennisActions => _tennisActions;
+        public static MainInput.TennisAltActions TennisAltActions => _tennisAltActions;
         public static MainInput.UIActions UIActions => _uiActions;
         public static MainInput.DeveloperActions DeveloperActions => _developerActions;
 
@@ -23,8 +23,8 @@ namespace SGSports.System
             _input.Enable();
             _footballActions = _input.Football;
             _footballAltActions = _input.FootballAlt;
-            _tennis = _input.Tennis;
-            _tennisAlt = _input.TennisAlt;
+            _tennisActions = _input.Tennis;
+            _tennisAltActions = _input.TennisAlt;
             _uiActions = _input.UI;
             _developerActions = _input.Developer;
         }

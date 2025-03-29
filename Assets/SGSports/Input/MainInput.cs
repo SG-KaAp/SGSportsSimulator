@@ -776,7 +776,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""ba981091-fe68-4c5e-845b-9e6afdb80174"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";KeyboardAndMouse"",
@@ -787,7 +787,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""8047556c-6dc8-4c67-a80b-ba739ac40cd9"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";KeyboardAndMouse"",
@@ -802,26 +802,48 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             ""id"": ""699d2db1-dda1-4aaa-bf15-d5981fbf6095"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""4f8dd71a-575d-4590-8b20-c52a7dcf880b"",
-                    ""expectedControlType"": """",
+                    ""name"": ""MovementVector"",
+                    ""type"": ""Value"",
+                    ""id"": ""1122b46f-8699-477a-942b-560a9bc69727"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""181614fc-4c53-4d5b-91f4-a8c0d2f18391"",
-                    ""path"": """",
+                    ""name"": ""1D Axis"",
+                    ""id"": ""99e32274-e872-414d-9709-792833ff5740"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
+                    ""action"": ""MovementVector"",
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""ce2cfed6-a4cd-4e80-85a9-d27b1b2a93b1"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardAndMouse"",
+                    ""action"": ""MovementVector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1af27c66-229a-4011-b244-f4f8ec0ccfb4"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";KeyboardAndMouse"",
+                    ""action"": ""MovementVector"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -1489,7 +1511,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         m_Tennis_MovementVector = m_Tennis.FindAction("MovementVector", throwIfNotFound: true);
         // TennisAlt
         m_TennisAlt = asset.FindActionMap("TennisAlt", throwIfNotFound: true);
-        m_TennisAlt_Newaction = m_TennisAlt.FindAction("New action", throwIfNotFound: true);
+        m_TennisAlt_MovementVector = m_TennisAlt.FindAction("MovementVector", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1861,12 +1883,12 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
     // TennisAlt
     private readonly InputActionMap m_TennisAlt;
     private List<ITennisAltActions> m_TennisAltActionsCallbackInterfaces = new List<ITennisAltActions>();
-    private readonly InputAction m_TennisAlt_Newaction;
+    private readonly InputAction m_TennisAlt_MovementVector;
     public struct TennisAltActions
     {
         private @MainInput m_Wrapper;
         public TennisAltActions(@MainInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_TennisAlt_Newaction;
+        public InputAction @MovementVector => m_Wrapper.m_TennisAlt_MovementVector;
         public InputActionMap Get() { return m_Wrapper.m_TennisAlt; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1876,16 +1898,16 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_TennisAltActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_TennisAltActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @MovementVector.started += instance.OnMovementVector;
+            @MovementVector.performed += instance.OnMovementVector;
+            @MovementVector.canceled += instance.OnMovementVector;
         }
 
         private void UnregisterCallbacks(ITennisAltActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @MovementVector.started -= instance.OnMovementVector;
+            @MovementVector.performed -= instance.OnMovementVector;
+            @MovementVector.canceled -= instance.OnMovementVector;
         }
 
         public void RemoveCallbacks(ITennisAltActions instance)
@@ -2141,7 +2163,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
     }
     public interface ITennisAltActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnMovementVector(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

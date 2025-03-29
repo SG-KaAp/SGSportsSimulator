@@ -1,7 +1,7 @@
 using SGSports.System;
 using UnityEngine;
 
-namespace SGSPorts.Player
+namespace SGSports.Player
 {
     public class PlayerController : MonoBehaviour
     {
