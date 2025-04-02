@@ -539,7 +539,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a399df1c-abc4-4e7a-83e5-be55f92f6d51"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
