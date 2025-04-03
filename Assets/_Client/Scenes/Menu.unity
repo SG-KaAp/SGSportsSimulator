@@ -502,9 +502,9 @@ RectTransform:
   - {fileID: 917131056}
   m_Father: {fileID: 560928016}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 116.5, y: -185.5}
   m_SizeDelta: {x: 233, y: 59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &61095131
@@ -556,8 +556,8 @@ MonoBehaviour:
         m_MethodName: MenuMoveOut
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 597167514}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 597167513}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -568,8 +568,8 @@ MonoBehaviour:
         m_MethodName: MenuMoveIn
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 165670543}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 165670542}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -673,9 +673,9 @@ RectTransform:
   - {fileID: 852374207}
   m_Father: {fileID: 419833517}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 116.5, y: -29.5}
   m_SizeDelta: {x: 233, y: 59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &69378222
@@ -1176,9 +1176,9 @@ RectTransform:
   - {fileID: 554745929}
   m_Father: {fileID: 419833517}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 116.5, y: -380.72726}
   m_SizeDelta: {x: 211.81818, y: 53.636364}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &116615050
@@ -1454,7 +1454,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 165670543}
-  - component: {fileID: 165670547}
   - component: {fileID: 165670546}
   - component: {fileID: 165670545}
   - component: {fileID: 165670544}
@@ -1464,7 +1463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &165670543
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1540,20 +1539,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165670542}
   m_CullTransparentMesh: 1
---- !u!114 &165670547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165670542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21852322e16e4b2edbdc430d722f6d08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainPanel: {fileID: 0}
-  controllersIcon: []
 --- !u!1 &169832941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,9 +2139,9 @@ RectTransform:
   - {fileID: 566687135}
   m_Father: {fileID: 419833517}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 116.5, y: -312.0909}
   m_SizeDelta: {x: 211.8182, y: 53.63636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &355136042
@@ -2651,11 +2636,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876948920}
         m_TargetAssemblyTypeName: SGSports.UI.Menu.MenuLogic, Assembly-CSharp
-        m_MethodName: MenuMoveIn
+        m_MethodName: MenuMoveOut
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 597167514}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 821640797}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2663,11 +2648,11 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1876948920}
         m_TargetAssemblyTypeName: SGSports.UI.Menu.MenuLogic, Assembly-CSharp
-        m_MethodName: MenuMoveOut
+        m_MethodName: MenuMoveIn
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 821640798}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 597167513}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2720,7 +2705,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 465823768}
-  - component: {fileID: 465823772}
   - component: {fileID: 465823771}
   - component: {fileID: 465823770}
   - component: {fileID: 465823769}
@@ -2730,7 +2714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &465823768
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2806,20 +2790,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465823767}
   m_CullTransparentMesh: 1
---- !u!114 &465823772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 465823767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21852322e16e4b2edbdc430d722f6d08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainPanel: {fileID: 0}
-  controllersIcon: []
 --- !u!1 &491795297
 GameObject:
   m_ObjectHideFlags: 0
@@ -3658,7 +3628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &597167514
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3766,9 +3736,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1347584917}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 133, y: -79}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &598870663
@@ -4537,9 +4507,9 @@ RectTransform:
   - {fileID: 1517079408}
   m_Father: {fileID: 419833517}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 116.5, y: -452.04544}
   m_SizeDelta: {x: 233, y: 59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &667318292
@@ -4614,11 +4584,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876948920}
         m_TargetAssemblyTypeName: SGSports.UI.Menu.MenuLogic, Assembly-CSharp
-        m_MethodName: MenuMoveIn
+        m_MethodName: MenuMoveOut
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 597167514}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 165670542}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4626,11 +4596,11 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1876948920}
         m_TargetAssemblyTypeName: SGSports.UI.Menu.MenuLogic, Assembly-CSharp
-        m_MethodName: MenuMoveOut
+        m_MethodName: MenuMoveIn
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 165670543}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 597167513}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4985,9 +4955,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1404133048}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 133, y: -187}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &757464368
@@ -5233,9 +5203,9 @@ RectTransform:
   - {fileID: 1540680411}
   m_Father: {fileID: 560928016}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 116.5, y: -107.5}
   m_SizeDelta: {x: 233, y: 59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &780640078
@@ -5281,7 +5251,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 780640079}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1876948920}
+        m_TargetAssemblyTypeName: SGSports.UI.Menu.MenuLogic, Assembly-CSharp
+        m_MethodName: MenuMoveOut
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 597167513}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1876948920}
+        m_TargetAssemblyTypeName: SGSports.UI.Menu.MenuLogic, Assembly-CSharp
+        m_MethodName: MenuMoveIn
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1482683236}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &780640079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5355,7 +5349,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 821640798}
-  - component: {fileID: 821640802}
   - component: {fileID: 821640801}
   - component: {fileID: 821640800}
   - component: {fileID: 821640799}
@@ -5365,7 +5358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &821640798
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5442,20 +5435,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821640797}
   m_CullTransparentMesh: 1
---- !u!114 &821640802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821640797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21852322e16e4b2edbdc430d722f6d08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainPanel: {fileID: 0}
-  controllersIcon: []
 --- !u!1 &825578676
 GameObject:
   m_ObjectHideFlags: 0
@@ -5816,9 +5795,9 @@ RectTransform:
   - {fileID: 2090946867}
   m_Father: {fileID: 419833517}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 116.5, y: -243.45454}
   m_SizeDelta: {x: 211.8182, y: 53.63636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &905358002
@@ -6864,9 +6843,9 @@ RectTransform:
   - {fileID: 1135101438}
   m_Father: {fileID: 419833517}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 116.5, y: -172.13637}
   m_SizeDelta: {x: 233, y: 59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1066922113
@@ -7007,9 +6986,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1404133048}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 133, y: -79}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1098531267
@@ -7085,9 +7064,9 @@ RectTransform:
   - {fileID: 273692219}
   m_Father: {fileID: 646474693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 133, y: -491.5}
   m_SizeDelta: {x: 233, y: 59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1122926023
@@ -7162,11 +7141,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876948920}
         m_TargetAssemblyTypeName: SGSports.UI.Menu.MenuLogic, Assembly-CSharp
-        m_MethodName: MenuMoveIn
+        m_MethodName: MenuMoveOut
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 597167514}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 465823767}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7174,11 +7153,11 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1876948920}
         m_TargetAssemblyTypeName: SGSports.UI.Menu.MenuLogic, Assembly-CSharp
-        m_MethodName: MenuMoveOut
+        m_MethodName: MenuMoveIn
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 465823768}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 597167513}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7559,9 +7538,9 @@ RectTransform:
   m_Father: {fileID: 764847829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1230355410
 MonoBehaviour:
@@ -7996,9 +7975,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1347584917}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 133, y: -187}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1331121458
@@ -8138,9 +8117,9 @@ RectTransform:
   - {fileID: 1331121457}
   m_Father: {fileID: 646474693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 133, y: -339}
   m_SizeDelta: {x: 266, y: 216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1347584918
@@ -8525,9 +8504,9 @@ RectTransform:
   - {fileID: 757464367}
   m_Father: {fileID: 646474693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 133, y: -108}
   m_SizeDelta: {x: 266, y: 216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1404133049
@@ -8875,7 +8854,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1482683237}
-  - component: {fileID: 1482683241}
   - component: {fileID: 1482683240}
   - component: {fileID: 1482683239}
   - component: {fileID: 1482683238}
@@ -8885,7 +8863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1482683237
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8962,20 +8940,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482683236}
   m_CullTransparentMesh: 1
---- !u!114 &1482683241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482683236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21852322e16e4b2edbdc430d722f6d08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainPanel: {fileID: 0}
-  controllersIcon: []
 --- !u!1 &1487634137
 GameObject:
   m_ObjectHideFlags: 0
@@ -9011,9 +8975,9 @@ RectTransform:
   - {fileID: 1599128175}
   m_Father: {fileID: 560928016}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 116.5, y: -341.5}
   m_SizeDelta: {x: 233, y: 59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1487634139
@@ -9060,13 +9024,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1876948915}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1876948920}
+        m_TargetAssemblyTypeName: SGSports.UI.Menu.MenuLogic, Assembly-CSharp
+        m_MethodName: ApplicationQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9597,11 +9561,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1876948920}
         m_TargetAssemblyTypeName: SGSports.UI.Menu.MenuLogic, Assembly-CSharp
-        m_MethodName: MenuMoveIn
+        m_MethodName: MenuMoveOut
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 597167514}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 1482683236}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9609,11 +9573,11 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1876948920}
         m_TargetAssemblyTypeName: SGSports.UI.Menu.MenuLogic, Assembly-CSharp
-        m_MethodName: MenuMoveOut
+        m_MethodName: MenuMoveIn
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1482683237}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 597167513}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10043,9 +10007,9 @@ RectTransform:
   - {fileID: 553531332}
   m_Father: {fileID: 419833517}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 116.5, y: -100.818184}
   m_SizeDelta: {x: 211.81818, y: 53.636364}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675575595
@@ -10691,9 +10655,9 @@ RectTransform:
   - {fileID: 421017098}
   m_Father: {fileID: 560928016}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 116.5, y: -263.5}
   m_SizeDelta: {x: 233, y: 59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1852008614
@@ -10745,8 +10709,8 @@ MonoBehaviour:
         m_MethodName: MenuMoveOut
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 597167514}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 597167513}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10757,8 +10721,8 @@ MonoBehaviour:
         m_MethodName: MenuMoveIn
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 821640798}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 821640797}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10947,8 +10911,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21852322e16e4b2edbdc430d722f6d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainPanel: {fileID: 597167514}
-  controllersIcon: []
+  mainPanel: {fileID: 597167513}
+  controllersIcons: []
+  controllers: []
 --- !u!1 &1903963092
 GameObject:
   m_ObjectHideFlags: 0
@@ -11118,7 +11083,7 @@ RectTransform:
   m_Father: {fileID: 604917102}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -11271,9 +11236,9 @@ RectTransform:
   - {fileID: 1668799749}
   m_Father: {fileID: 560928016}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 116.5, y: -29.5}
   m_SizeDelta: {x: 233, y: 59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2033675784
@@ -11325,8 +11290,8 @@ MonoBehaviour:
         m_MethodName: MenuMoveOut
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 597167514}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 597167513}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11337,8 +11302,8 @@ MonoBehaviour:
         m_MethodName: MenuMoveIn
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 465823768}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 465823767}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
