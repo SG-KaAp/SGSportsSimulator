@@ -7,20 +7,25 @@ namespace SGSports.UI.Menu
 {
     public class MenuLogic : MonoBehaviour
     {
-        [SerializeField] private Transform mainPanel;
-        [SerializeField] private Controller[] controllersIcon;
+        [SerializeField] private GameObject mainPanel;
+        [SerializeField] private GameObject[] controllersIcons;
+        [SerializeField] private Controller[] controllers;
         public void Awake()
         {
             MenuMoveIn(mainPanel);
         }
-        public void MenuMoveIn(Transform transform)
+        public void MenuMoveIn(GameObject panel)
         {
-            transform.DOMoveX(375, 1.5f);
+            panel.SetActive(true);
+            panel.transform.DOMoveX(375, 1.5f);
         }
 
-        public void MenuMoveOut(Transform transform)
+        public void MenuMoveOut(GameObject panel)
         {
-            transform.DOMoveX(-375, 1.5f);
+            panel.transform.DOMoveX(-375, 1.5f) .OnComplete(() =>
+            {
+                panel.SetActive(false);
+            });
         }
 
         public void VSyncSet(bool enable) => SettingsManager.EnableVSync(enable ? 1 : 0);
@@ -40,7 +45,9 @@ namespace SGSports.UI.Menu
         public void ApplicationQuit() => Application.Quit();
         public void ControllerConnected()
         {
-
+            print("Aboaba");
+            controllers[1] = new Controller();
+            controllers[1].ControllerInit(controllersIcons[1], 1);
         }
     }
     [Serializable]
@@ -48,7 +55,12 @@ namespace SGSports.UI.Menu
     {
         [SerializeField] private GameObject controllerIcon;
         [SerializeField] private int controllerId;
-        public GameObject ControllerIcon => controllerIcon;
-        public int ControllerId => controllerId;
+        public GameObject GetControllerIcon() => controllerIcon;
+        public int GetControllerId() => controllerId;
+        public void ControllerInit(GameObject icon, int id)
+        {
+            controllerIcon = icon;
+            controllerId = id;
+        }
     }
 }
