@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SGSports/Scenes/Bootstrap.unity
+    path: Assets/_Client/Scenes/Bootstrap.unity
     guid: aa30010cdd0bd58bfa275a28c4aa13ec
   - enabled: 1
-    path: Assets/SGSports/Scenes/Menu.unity
+    path: Assets/_Client/Scenes/Menu.unity
     guid: fc325701a49aa1ea98e164ffa6704056
   - enabled: 1
-    path: Assets/SGSports/Scenes/FootballScene01.unity
+    path: Assets/_Client/Scenes/FootballScene01.unity
     guid: a8248d5663d6ccdf5846578a870e097d
   - enabled: 1
-    path: Assets/SGSports/Scenes/TableTennisScene01.unity
+    path: Assets/_Client/Scenes/TableTennisScene01.unity
     guid: a69b1e9983c68d77293706bf4080019b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 674e2cef2190eaad6b57fe190c856463, type: 3}
