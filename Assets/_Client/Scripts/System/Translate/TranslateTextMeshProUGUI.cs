@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,19 +18,27 @@ namespace _Client.System.Translate
 
         private void Start()
         {
-            translateFile = new StreamReader("Translate/" + translateLanguage + "/" + translateFileName + ".txt");
-            while (!translateFile.EndOfStream)
-            {
-                translatesList.Add(translateFile.ReadLine());
-            }
+            SettingsManager.ReloadTranslates += Translate;
             if (translateOnStart)
             {
                 Translate();
             }
         }
 
+        private void OnDestroy()
+        {
+            SettingsManager.ReloadTranslates -= Translate;
+        }
+
         public void Translate()
         {
+            translateLanguage = SettingsManager.Language;
+            translateFile = new StreamReader("Translate/" + translateLanguage + "/" + translateFileName + ".txt");
+            translatesList.Clear();
+            while (!translateFile.EndOfStream)
+            {
+                translatesList.Add(translateFile.ReadLine());
+            }
             textObject.text = translatesList[translateNumber];
         }
     }

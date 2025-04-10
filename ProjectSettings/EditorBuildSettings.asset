@@ -18,5 +18,5 @@ EditorBuildSettings:
     path: Assets/_Client/Scenes/TableTennisScene01.unity
     guid: a69b1e9983c68d77293706bf4080019b
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 674e2cef2190eaad6b57fe190c856463, type: 3}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: d9d7432109229aff2a3177a22c651bde, type: 3}
   m_UseUCBPForAssetBundles: 0

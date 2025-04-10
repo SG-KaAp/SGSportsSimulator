@@ -41,6 +41,8 @@ namespace _Client.UI.Menu
                 value = 8;
             SettingsManager.EnableMSAA(value);
         }
+
+        public void SetLanguage (int lang) => SettingsManager.SetLanguage(lang);
         public void AsyncLoadScene(string sceneName) => _Client.System.AsyncSceneManager.AsyncSceneLoad(sceneName);
         public void ApplicationQuit() => Application.Quit();
         public void ControllerConnected()

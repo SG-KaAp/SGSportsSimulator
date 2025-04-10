@@ -1,0 +1,14 @@
+Play
+Settings
+Credits
+Back
+Quit
+Modes
+Table Tennis
+Football
+Language
+Graphics
+VSync
+Anti-Aliasing
+Player One
+Player Two

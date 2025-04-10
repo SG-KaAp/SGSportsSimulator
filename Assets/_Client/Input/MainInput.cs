@@ -572,7 +572,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2551227b-b21e-4907-881e-451d3580cbb1"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/alt"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardAndMouse"",

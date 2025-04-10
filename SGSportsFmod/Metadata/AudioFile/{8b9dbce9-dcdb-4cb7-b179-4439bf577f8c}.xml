@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{8b9dbce9-dcdb-4cb7-b179-4439bf577f8c}">
+		<property name="assetPath">
+			<value>UI/buzzer.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>20.897959183673468</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{41caa0d9-68d3-4dbc-9d9b-70cd08531021}</destination>
+		</relationship>
+	</object>
+</objects>
