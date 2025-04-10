@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using FMODUnity;
 
-namespace SGSports.UI.Menu
+namespace _Client.UI.Menu
 {
     public class ButtonSounds : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler
     {

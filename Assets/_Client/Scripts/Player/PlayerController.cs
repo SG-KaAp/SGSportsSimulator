@@ -1,8 +1,7 @@
-using System;
-using SGSports.System;
+using _Client.System;
 using UnityEngine;
 
-namespace SGSports.Player
+namespace _Client.Player
 {
     public class PlayerController : MonoBehaviour
     {

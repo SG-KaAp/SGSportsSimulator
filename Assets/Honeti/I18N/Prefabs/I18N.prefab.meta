@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2893440cf658e9a4194efdefc6ca80f3
+timeCreated: 1457958471
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 59716
+  packageName: I18N Plugin
+  packageVersion: 1.0
+  assetPath: Assets/Honeti/I18N/Prefabs/I18N.prefab
+  uploadId: 112892

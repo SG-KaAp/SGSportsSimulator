@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f497b6315978fcc48a28133d496e1b8d
+timeCreated: 1459418269
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 59716
+  packageName: I18N Plugin
+  packageVersion: 1.0
+  assetPath: Assets/Honeti/I18N/Scenes/example_image.unity
+  uploadId: 112892

@@ -221,6 +221,7 @@ namespace SingularityGroup.HotReload {
                 } catch (Exception ex) {
                     RequestHelper.RequestEditorEventWithRetry(new Stat(StatSource.Client, StatLevel.Error, StatFeature.Patching, StatEventType.Exception), new EditorExtraData {
                         { StatKey.PatchId, patch.patchId },
+                        { StatKey.Detailed_Exception, ex.ToString() },
                     }).Forget();
                     Log.Warning("Failed to apply patch with id: {0}\n{1}", patch.patchId, ex);
                 }
@@ -265,6 +266,7 @@ namespace SingularityGroup.HotReload {
                 } catch (Exception e) {
                     RequestHelper.RequestEditorEventWithRetry(new Stat(StatSource.Client, StatLevel.Error, StatFeature.Patching, StatEventType.RegisterFieldInitializer), new EditorExtraData {
                         { StatKey.PatchId, resp.id },
+                        { StatKey.Detailed_Exception, e.ToString() },
                     }).Forget();
                     Log.Warning($"Failed registering initializer for field {sField.fieldName} in {sField.declaringType.typeName}. Field value might not be initialized correctly. Exception: {e.Message}");
                 }
@@ -280,6 +282,7 @@ namespace SingularityGroup.HotReload {
                 } catch (Exception e) {
                     RequestHelper.RequestEditorEventWithRetry(new Stat(StatSource.Client, StatLevel.Error, StatFeature.Patching, StatEventType.RegisterFieldDefinition), new EditorExtraData {
                         { StatKey.PatchId, resp.id },
+                        { StatKey.Detailed_Exception, e.ToString() },
                     }).Forget();
                     Log.Warning($"Failed registering new field definitions for field {sField.fieldName} in {sField.declaringType.typeName}. Exception: {e.Message}");
                 }
@@ -470,11 +473,16 @@ namespace SingularityGroup.HotReload {
                     } else {
                         RequestHelper.RequestEditorEventWithRetry(new Stat(StatSource.Client, StatLevel.Error, StatFeature.Patching, StatEventType.Failure), new EditorExtraData {
                             { StatKey.PatchId, patchId },
+                            { StatKey.Detailed_Exception, result.exception.ToString() },
                         }).Forget();
                         return HandleMethodPatchFailure(sOriginalMethod, result.exception);
                     }
                 }
             } catch(Exception ex) {
+                RequestHelper.RequestEditorEventWithRetry(new Stat(StatSource.Client, StatLevel.Error, StatFeature.Patching, StatEventType.Exception), new EditorExtraData {
+                    { StatKey.PatchId, patchId },
+                    { StatKey.Detailed_Exception, ex.ToString() },
+                }).Forget();
                 return HandleMethodPatchFailure(sOriginalMethod, ex);
             }
         }

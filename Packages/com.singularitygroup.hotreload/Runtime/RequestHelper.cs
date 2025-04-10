@@ -362,9 +362,24 @@ namespace SingularityGroup.HotReload {
             return PostJson(url + "/clearpatches", body, 10);
         }
         
-        public static Task RequestCompile() {
+        public static async Task RequestCompile(Action<string> onResponseReceived) {
             var body = SerializeRequestBody(new CompileRequest(serverInfo.rootPath, IsReleaseMode()));
-            return PostJson(url + "/compile", body, 10);
+            var result = await PostJson(url + "/compile", body, 10);
+            if (result.statusCode == HttpStatusCode.OK && !string.IsNullOrEmpty(result.responseText)) {
+                var responses = JsonConvert.DeserializeObject<List<string>>(result.responseText);
+                if (responses == null) {
+                    return;
+                }
+                await ThreadUtility.SwitchToMainThread();
+                foreach (var response in responses) {
+                    // Avoid importing assets twice
+                    if (responses.Contains(response + ".meta")) {
+                        Log.Debug($"Ignoring asset change inside Unity: {response}");
+                        continue;
+                    }
+                    onResponseReceived(response);
+                }
+            }
         }
         
         internal static async Task<List<ChangelogVersion>> FetchChangelog(int timeoutSeconds = 20) {

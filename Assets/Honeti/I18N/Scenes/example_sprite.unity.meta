@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d13b4c9007381774cbc2cc44aacddd3a
+timeCreated: 1459434962
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 59716
+  packageName: I18N Plugin
+  packageVersion: 1.0
+  assetPath: Assets/Honeti/I18N/Scenes/example_sprite.unity
+  uploadId: 112892

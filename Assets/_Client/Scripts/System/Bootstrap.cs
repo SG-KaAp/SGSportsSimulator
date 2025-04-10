@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace SGSports.System
+namespace _Client.System
 {
     public class Bootstrap : MonoBehaviour
     {

@@ -24,11 +24,11 @@ namespace SingularityGroup.HotReload.Editor {
             if (showOnStartup == ShowOnStartupEnum.Always || (showOnStartup == ShowOnStartupEnum.OnNewVersion && !String.IsNullOrEmpty(updatedFromVersion))) {
                 // Don't open Hot Reload window inside Virtual Player folder
                 // This is a heuristic since user might have the main player inside VP user-created folder, but that will be rare
-                if (new DirectoryInfo(Path.GetFullPath("..")).Name != "VP") {
+                if (new DirectoryInfo(Path.GetFullPath("..")).Name != "VP" && !HotReloadPrefs.DeactivateHotReload) {
                     HotReloadWindow.Open();
                 }
             }
-            if (HotReloadPrefs.LaunchOnEditorStart) {
+            if (HotReloadPrefs.LaunchOnEditorStart && !HotReloadPrefs.DeactivateHotReload) {
                 EditorCodePatcher.DownloadAndRun().Forget();
             }
             

@@ -100,10 +100,17 @@ namespace SingularityGroup.HotReload.Editor {
                 return;
             }
             
-            // ReSharper disable ExpressionIsAlwaysNull
-            UnityFieldHelper.Init(Log.Warning, DrawOdinInspectorInfo, OdinPropertyDrawInfo, OdinPropertyDrawPrefixInfo, typeof(UnityFieldDrawerPatchHelper));
-            
             serverDownloader = new ServerDownloader();
+            serverDownloader.CheckIfDownloaded(HotReloadCli.controller);
+            SingularityGroup.HotReload.Demo.Demo.I = new EditorDemo();
+            if (HotReloadPrefs.DeactivateHotReload || new DirectoryInfo(Path.GetFullPath("..")).Name == "VP") {
+                ResetSettings();
+                return;
+            }
+            
+            // ReSharper disable ExpressionIsAlwaysNull
+            UnityFieldHelper.Init(Log.Warning, HotReloadRunTab.Recompile, DrawOdinInspectorInfo, OdinPropertyDrawInfo, OdinPropertyDrawPrefixInfo, typeof(UnityFieldDrawerPatchHelper));
+            
             timer = new Timer(OnIntervalThreaded, (Action) OnIntervalMainThread, 500, 500);
 
             UpdateHost();
@@ -137,7 +144,6 @@ namespace SingularityGroup.HotReload.Editor {
             };
             DetectEditorStart();
             DetectVersionUpdate();
-            SingularityGroup.HotReload.Demo.Demo.I = new EditorDemo();
             RecordActiveDaysForRateApp();
             CodePatcher.I.fieldHandler = new FieldHandler(FieldDrawerUtil.StoreField, UnityFieldHelper.HideField);
             if (EditorApplication.isPlayingOrWillChangePlaymode) {
@@ -181,8 +187,12 @@ namespace SingularityGroup.HotReload.Editor {
 #endif
         }
 
-        public static void ResetSettingsOnQuit() {
+        static void ResetSettingsOnQuit() {
             quitting = true;
+            ResetSettings();
+        }
+        
+        static void ResetSettings() {
             AutoRefreshSettingChecker.Reset();
             ScriptCompilationSettingChecker.Reset();
             PlaymodeTintSettingChecker.Reset();
@@ -556,6 +566,10 @@ namespace SingularityGroup.HotReload.Editor {
             if (Directory.Exists(assetPath)) {
                 return;
             }
+            // ignore temp compile files
+            if (assetPath.Contains("UnityDirMonSyncFile") || assetPath.EndsWith("~", StringComparison.Ordinal)) {
+                return;
+            }
             foreach (var compileFile in compileFiles) {
                 if (assetPath.EndsWith(compileFile, StringComparison.Ordinal)) {
                     HotReloadTimelineHelper.CreateErrorEventEntry($"errors: AssemblyFileEdit: Editing assembly files requires recompiling in Unity. in {assetPath}", entryType: EntryType.Foldout);
@@ -596,23 +610,45 @@ namespace SingularityGroup.HotReload.Editor {
                     }
                 }
             }
-            var relativePath = GetRelativePath(assetPath, Path.GetFullPath("Assets"));
-            var relativePathPackages = GetRelativePath(assetPath, Path.GetFullPath("Packages"));
-            // ignore files outside assets and packages folders
-            if (relativePath.StartsWith("..", StringComparison.Ordinal) 
-                && relativePathPackages.StartsWith("..", StringComparison.Ordinal)
-            ) {
+            var path = ToPath(assetPath);
+            if (path == null) {
                 return;
             }
             try {
                 if (!File.Exists(assetPath)) {
-                    AssetDatabase.DeleteAsset(relativePath);
+                    AssetDatabase.DeleteAsset(path);
                 } else {
-                    AssetDatabase.ImportAsset(relativePath, ImportAssetOptions.ForceUpdate);
+                    AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
                 }
             } catch (Exception e){
                 Log.Warning($"Refreshing asset at path: {assetPath} failed due to exception: {e}");
             }
+        }
+
+        static string ToPath(string assetPath) {
+            var relativePath = GetRelativePath(assetPath, Path.GetFullPath("Assets"));
+            var relativePathPackages = GetRelativePath(assetPath, Path.GetFullPath("Packages"));
+            // ignore files outside assets and packages folders
+            if (relativePath.StartsWith("..", StringComparison.Ordinal)) {
+                relativePath = null;
+            }
+            if (relativePathPackages.StartsWith("..", StringComparison.Ordinal)) {
+                relativePathPackages = null;
+                #if UNITY_2021_1_OR_NEWER
+                // Might be inside a package "file:"
+                try {
+                    foreach (var package in UnityEditor.PackageManager.PackageInfo.GetAllRegisteredPackages()) {
+                        if (assetPath.StartsWith(package.resolvedPath.Replace("\\", "/"), StringComparison.Ordinal)) {
+                            relativePathPackages = $"Packages/{package.name}/{assetPath.Substring(package.resolvedPath.Length)}";
+                            break;
+                        }
+                    }
+                } catch {
+                    // ignore
+                }
+                #endif
+            }
+            return relativePath ?? relativePathPackages;
         }
 
         public static string GetRelativePath(string filespec, string folder) {
@@ -836,7 +872,12 @@ namespace SingularityGroup.HotReload.Editor {
             try {
                 await RequestHelper.RequestClearPatches();
                 await ProjectGeneration.ProjectGeneration.GenerateSlnAndCsprojFiles(Application.dataPath);
-                await RequestHelper.RequestCompile();
+                await RequestHelper.RequestCompile(scenePath => {
+                    var path = ToPath(scenePath);
+                    if (File.Exists(scenePath) && path != null) {
+                        AssetDatabase.ImportAsset(path, ImportAssetOptions.Default);
+                    }
+                });
             } finally {
                 requestingCompile = false;
             }
@@ -884,12 +925,13 @@ namespace SingularityGroup.HotReload.Editor {
             var allAssetChanges = HotReloadPrefs.AllAssetChanges;
             var disableConsoleWindow = HotReloadPrefs.DisableConsoleWindow;
             var isReleaseMode = RequestHelper.IsReleaseMode();
+            var detailedErrorReporting = !HotReloadPrefs.DisableDetailedErrorReporting;
             CodePatcher.I.ClearPatchedMethods();
             try {
                 requestingStart = true;
                 startupProgress = Tuple.Create(0f, "Starting Hot Reload");
                 serverStartedAt = DateTime.UtcNow;
-                await HotReloadCli.StartAsync(exposeToNetwork, allAssetChanges, disableConsoleWindow, isReleaseMode, loginData).ConfigureAwait(false);
+                await HotReloadCli.StartAsync(exposeToNetwork, allAssetChanges, disableConsoleWindow, isReleaseMode, detailedErrorReporting, loginData).ConfigureAwait(false);
             }
             catch (Exception ex) {
                 ThreadUtility.LogException(ex);
@@ -900,10 +942,14 @@ namespace SingularityGroup.HotReload.Editor {
         }
         
         private static bool requestingStop;
-        internal static async Task StopCodePatcher() {
+        internal static async Task StopCodePatcher(bool recompileOnDone = false) {
             stopping = true;
             starting = false;
             if (requestingStop) {
+                if (recompileOnDone) {
+                    await ThreadUtility.SwitchToMainThread();
+                    HotReloadRunTab.Recompile();
+                }
                 return;
             }
             CodePatcher.I.ClearPatchedMethods();
@@ -913,6 +959,9 @@ namespace SingularityGroup.HotReload.Editor {
                 await HotReloadCli.StopAsync().ConfigureAwait(false);
                 serverStoppedAt = DateTime.UtcNow;
                 await ThreadUtility.SwitchToMainThread();
+                if (recompileOnDone) {
+                    HotReloadRunTab.Recompile();
+                }
                 startupProgress = null;
             }
             catch (Exception ex) {
@@ -945,7 +994,7 @@ namespace SingularityGroup.HotReload.Editor {
         internal static bool DownloadRequired => DownloadProgress < 1f;
         internal static bool DownloadStarted => serverDownloader.Started;
         internal static bool RequestingDownloadAndRun => requestingDownloadAndRun;
-        internal static async Task<bool> DownloadAndRun(LoginData loginData = null) {
+        internal static async Task<bool> DownloadAndRun(LoginData loginData = null, bool recompileOnDone = false) {
             if (requestingDownloadAndRun) {
                 return false;
             }
@@ -959,6 +1008,11 @@ namespace SingularityGroup.HotReload.Editor {
                     }
                 }
                 await StartCodePatcher(loginData);
+                await ThreadUtility.SwitchToMainThread();
+                if (HotReloadPrefs.DeactivateHotReload) {
+                    HotReloadPrefs.DeactivateHotReload = false;
+                    HotReloadRunTab.Recompile();
+                }
                 return true;
             } finally {
                 requestingDownloadAndRun = false;

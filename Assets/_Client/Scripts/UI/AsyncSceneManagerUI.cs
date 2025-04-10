@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SGSports.UI
+namespace _Client.UI
 {
     public class AsyncSceneManagerUI : MonoBehaviour
     {

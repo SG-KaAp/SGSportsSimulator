@@ -29,6 +29,10 @@ namespace SingularityGroup.HotReload.Editor {
         internal static bool CheckSuggestionActive(HotReloadSuggestionKind hotReloadSuggestionKind) {
             return EditorPrefs.GetBool($"HotReloadWindow.SuggestionsActive.{hotReloadSuggestionKind}");
         }
+        
+        internal static bool CheckSuggestionShown(HotReloadSuggestionKind hotReloadSuggestionKind) {
+            return EditorPrefs.GetBool($"HotReloadWindow.SuggestionsShown.{hotReloadSuggestionKind}");
+        }
 
         internal static bool CanShowServerSuggestion(HotReloadSuggestionKind hotReloadSuggestionKind) {
             if (hotReloadSuggestionKind == HotReloadSuggestionKind.FieldInitializerWithSideEffects) {
@@ -37,11 +41,17 @@ namespace SingularityGroup.HotReload.Editor {
                 return !HotReloadState.ShowedFieldInitializerExistingInstancesEdited;
             } else if (hotReloadSuggestionKind == HotReloadSuggestionKind.FieldInitializerExistingInstancesUnedited) {
                 return !HotReloadState.ShowedFieldInitializerExistingInstancesUnedited;
+            } else if (hotReloadSuggestionKind == HotReloadSuggestionKind.DetailedErrorReportingIsEnabled) {
+                return !CheckSuggestionShown(HotReloadSuggestionKind.DetailedErrorReportingIsEnabled);
             }
             return false;
         }
         
         internal static void SetServerSuggestionShown(HotReloadSuggestionKind hotReloadSuggestionKind) {
+            if (hotReloadSuggestionKind == HotReloadSuggestionKind.DetailedErrorReportingIsEnabled) {
+                HotReloadSuggestionsHelper.SetSuggestionsShown(hotReloadSuggestionKind);
+                return;
+            } 
             if (hotReloadSuggestionKind == HotReloadSuggestionKind.FieldInitializerWithSideEffects) {
                 HotReloadState.ShowedFieldInitializerWithSideEffects = true;
             } else if (hotReloadSuggestionKind == HotReloadSuggestionKind.FieldInitializerExistingInstancesEdited) {
@@ -262,6 +272,29 @@ namespace SingularityGroup.HotReload.Editor {
                 entryType: EntryType.Foldout,
                 iconType: AlertType.Suggestion
             )},
+            { HotReloadSuggestionKind.DetailedErrorReportingIsEnabled, new AlertEntry(
+                AlertType.Suggestion, 
+                "Detailed error reporting is enabled",
+                "When an error happens in Hot Reload, the exception stacktrace is sent as telemetry to help diagnose and fix the issue.\nThe exception stack trace is only included if it originated from the Hot Reload package or binary. Stacktraces from your own code are not sent.\nYou can disable detailed error reporting to prevent telemetry from including any information about your project.",
+                actionData: () => {
+                    GUILayout.Space(10f);
+                    using (new EditorGUILayout.HorizontalScope()) {
+                        GUILayout.Space(4f);
+                        if (GUILayout.Button("    OK    ")) {
+                            SetSuggestionInactive(HotReloadSuggestionKind.DetailedErrorReportingIsEnabled);
+                        }
+                        GUILayout.FlexibleSpace();
+                        if (GUILayout.Button(" Disable ")) {
+                            HotReloadSettingsTab.DisableDetailedErrorReportingInner(true);
+                            SetSuggestionInactive(HotReloadSuggestionKind.DetailedErrorReportingIsEnabled);
+                        }
+                        GUILayout.Space(10f);
+                    }
+                },
+                timestamp: DateTime.Now,
+                entryType: EntryType.Foldout,
+                iconType: AlertType.Suggestion
+            )},
             // Not in use (never reported from the server)
             { HotReloadSuggestionKind.FieldInitializerExistingInstancesEdited, new AlertEntry(
                 AlertType.Suggestion, 
@@ -363,10 +396,11 @@ namespace SingularityGroup.HotReload.Editor {
                 unsupportedPackagesList == null) 
             {
                 unsupportedPackagesList = new List<string>();
-                var packages = listRequest.Result;
-                foreach (var packageInfo in packages) {
-                    if (unsupportedPackages.Contains(packageInfo.name)) {
-                        unsupportedPackagesList.Add(packageInfo.name);
+                if (listRequest.Result != null) {
+                    foreach (var packageInfo in listRequest.Result) {
+                        if (unsupportedPackages.Contains(packageInfo.name)) {
+                            unsupportedPackagesList.Add(packageInfo.name);
+                        }
                     }
                 }
                 if (unsupportedPackagesList.Count > 0) {

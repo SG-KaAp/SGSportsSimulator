@@ -180,6 +180,20 @@ namespace SingularityGroup.HotReload.Editor {
                             }
                         }
                     }
+                    
+                    using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.SectionOuterBoxCompact)) {
+                        using (new EditorGUILayout.HorizontalScope(HotReloadWindowStyles.SectionInnerBoxWide)) {
+                            using (new EditorGUILayout.VerticalScope()) {
+                                HotReloadPrefs.ShowAdvanced = EditorGUILayout.Foldout(HotReloadPrefs.ShowAdvanced, "Advanced", true, HotReloadWindowStyles.FoldoutStyle);
+                                if (HotReloadPrefs.ShowAdvanced) {
+                                    EditorGUILayout.Space();
+
+                                    DeactivateHotReload();
+                                    DisableDetailedErrorReporting();
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -267,6 +281,68 @@ namespace SingularityGroup.HotReload.Editor {
             EditorGUILayout.Space(6f);
         }
         
+        void DeactivateHotReload() {
+            var newSettings = EditorGUILayout.BeginToggleGroup(new GUIContent("Deactivate Hot Reload"), HotReloadPrefs.DeactivateHotReload);
+            if (newSettings != HotReloadPrefs.DeactivateHotReload) {
+                DeactivateHotReloadInner(newSettings);
+            }
+            string toggleDescription;
+            if (HotReloadPrefs.DeactivateHotReload) {
+                toggleDescription = "Hot Reload is deactivated.";
+            } else {
+                toggleDescription = "Enable to deactivate Hot Reload.";
+            }
+            EditorGUILayout.LabelField(toggleDescription, HotReloadWindowStyles.WrapStyle);
+            EditorGUILayout.EndToggleGroup();
+            EditorGUILayout.Space(6f);
+        }
+        
+        void DisableDetailedErrorReporting() {
+            var newSettings = EditorGUILayout.BeginToggleGroup(new GUIContent("Disable Detailed Error Reporting"), HotReloadPrefs.DisableDetailedErrorReporting);
+            DisableDetailedErrorReportingInner(newSettings);
+            string toggleDescription;
+            if (HotReloadPrefs.DisableDetailedErrorReporting) {
+                toggleDescription = "Detailed error reporting is disabled.";
+            } else {
+                toggleDescription = "Toggle on to disable detailed error reporting.";
+            }
+            EditorGUILayout.LabelField(toggleDescription, HotReloadWindowStyles.WrapStyle);
+            EditorGUILayout.EndToggleGroup();
+            EditorGUILayout.Space(6f);
+        }
+
+        public static void DisableDetailedErrorReportingInner(bool newSetting) {
+            if (newSetting == HotReloadPrefs.DisableDetailedErrorReporting) {
+                return;
+            }
+            HotReloadPrefs.DisableDetailedErrorReporting = newSetting;
+            // restart when setting changes
+            if (ServerHealthCheck.I.IsServerHealthy) {
+                var restartServer = EditorUtility.DisplayDialog("Hot Reload",
+                    $"When changing 'Disable Detailed Error Reporting', the Hot Reload server must be restarted for this to take effect." +
+                    "\nDo you want to restart it now?",
+                    "Restart server", "Don't restart");
+                if (restartServer) {
+                    EditorCodePatcher.RestartCodePatcher().Forget();
+                }
+            }
+        }
+
+        static void DeactivateHotReloadInner(bool deactivate) {
+            var confirmed = !deactivate || EditorUtility.DisplayDialog("Hot Reload",
+                $"Hot Reload will be completely deactivated (unusable) until you activate it again." +
+                "\n\nDo you want to proceed?",
+                "Deactivate", "Cancel");
+            if (confirmed) {
+                HotReloadPrefs.DeactivateHotReload = deactivate;
+                if (deactivate) {
+                    EditorCodePatcher.StopCodePatcher(recompileOnDone: true).Forget();
+                } else {
+                    HotReloadRunTab.Recompile();
+                }
+            }
+        }
+
         void RenderAutostart() {
             var newSettings = EditorGUILayout.BeginToggleGroup(new GUIContent("Autostart on Unity open"), HotReloadPrefs.LaunchOnEditorStart);
             if (newSettings != HotReloadPrefs.LaunchOnEditorStart) {
@@ -284,8 +360,9 @@ namespace SingularityGroup.HotReload.Editor {
         }
 
         void RenderShowNotifications() {
-            EditorGUILayout.Space(14f);
+            EditorGUILayout.Space(10f);
             GUILayout.Label("Visual Feedback", HotReloadWindowStyles.NotificationsTitleStyle);
+            EditorGUILayout.Space(10f);
             
             if (!EditorWindowHelper.supportsNotifications && !UnitySettingsHelper.I.playmodeTintSupported) {
                 var toggleDescription = "Indications are not supported in the Unity version you use.";
@@ -299,8 +376,9 @@ namespace SingularityGroup.HotReload.Editor {
         // }
 
         void RenderMiscHeader() {
-            EditorGUILayout.Space(14f);
+            EditorGUILayout.Space(10f);
             GUILayout.Label("Misc", HotReloadWindowStyles.NotificationsTitleStyle);
+            EditorGUILayout.Space(10f);
         }
 
         void RenderShowPatchingNotifications() {

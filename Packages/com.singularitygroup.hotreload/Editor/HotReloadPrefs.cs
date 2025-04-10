@@ -21,6 +21,7 @@ namespace SingularityGroup.HotReload.Editor {
         private const string RefreshManuallyTipCachedKey = "HotReloadWindow.RefreshManuallyTipCachedKey";
         private const string ShowLoginCachedKey = "HotReloadWindow.ShowLoginCachedKey";
         private const string ConfigurationKey = "HotReloadWindow.Configuration";
+        private const string AvdancedKey = "HotReloadWindow.Avdanced";
         private const string ShowPromoCodesCachedKey = "HotReloadWindow.ShowPromoCodesCached";
         private const string ShowOnDeviceKey = "HotReloadWindow.ShowOnDevice";
         private const string ShowChangelogKey = "HotReloadWindow.ShowChangelog";
@@ -52,6 +53,7 @@ namespace SingularityGroup.HotReload.Editor {
         private const string AllAssetChangesKey = "HotReloadWindow.AllAssetChanges";
         private const string IncludeShaderChangesKey = "HotReloadWindow.IncludeShaderChanges";
         private const string DisableConsoleWindowKey = "HotReloadWindow.DisableConsoleWindow";
+        private const string DisableDetailedErrorReportingKey = "HotReloadWindow.DisableDetailedErrorReporting";
         private const string RedeemLicenseEmailKey = "HotReloadWindow.RedeemLicenseEmail";
         private const string RedeemLicenseInvoiceKey = "HotReloadWindow.RedeemLicenseInvoice";
         private const string RunTabEventsSuggestionsFoldoutKey = "HotReloadWindow.RunTabEventsSuggestionsFoldout";
@@ -65,6 +67,7 @@ namespace SingularityGroup.HotReload.Editor {
         private const string ApplyFieldInitiailzerEditsToExistingClassInstancesKey = "HotReloadWindow.ApplyFieldInitiailzerEditsToExistingClassInstances";
         private const string LoggedInlinedMethodsDialogueKey = "HotReloadWindow.LoggedInlinedMethodsDialogue";
         private const string OpenedWindowAtLeastOnceKey = "HotReloadWindow.OpenedWindowAtLeastOnce";
+        private const string DeactivateHotReloadKey = "HotReloadWindow.DeactivateHotReload";
 
         public const string DontShowPromptForDownloadKey = "ServerDownloader.DontShowPromptForDownload";
 
@@ -161,6 +164,11 @@ namespace SingularityGroup.HotReload.Editor {
         public static bool ShowConfiguration {
             get { return EditorPrefs.GetBool(ConfigurationKey, true); }
             set { EditorPrefs.SetBool(ConfigurationKey, value); }
+        }
+        
+        public static bool ShowAdvanced {
+            get { return EditorPrefs.GetBool(AvdancedKey, false); }
+            set { EditorPrefs.SetBool(AvdancedKey, value); }
         }
 
         public static bool ShowPromoCodes {
@@ -443,6 +451,16 @@ namespace SingularityGroup.HotReload.Editor {
         public static bool LoggedInlinedMethodsDialogue {
             get { return EditorPrefs.GetBool(LoggedInlinedMethodsDialogueKey); }
             set { EditorPrefs.SetBool(LoggedInlinedMethodsDialogueKey, value); }
+        }
+        
+        public static bool DeactivateHotReload {
+            get { return EditorPrefs.GetBool(DeactivateHotReloadKey); }
+            set { EditorPrefs.SetBool(DeactivateHotReloadKey, value); }
+        }
+        
+        public static bool DisableDetailedErrorReporting {
+            get { return EditorPrefs.GetBool(DisableDetailedErrorReportingKey, false); }
+            set { EditorPrefs.SetBool(DisableDetailedErrorReportingKey, value); }
         }
     }
 }

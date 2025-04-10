@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 98663df97aba0a74895d0b68881a35a7
+timeCreated: 1459428205
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 59716
+  packageName: I18N Plugin
+  packageVersion: 1.0
+  assetPath: Assets/Honeti/I18N/Scenes/example_audioSource.unity
+  uploadId: 112892

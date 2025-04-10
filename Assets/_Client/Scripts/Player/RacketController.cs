@@ -1,7 +1,7 @@
+using _Client.System;
 using UnityEngine;
-using SGSports.System;
 
-namespace SGSports.Player
+namespace _Client.Player
 {
     public class RacketController : MonoBehaviour
     {

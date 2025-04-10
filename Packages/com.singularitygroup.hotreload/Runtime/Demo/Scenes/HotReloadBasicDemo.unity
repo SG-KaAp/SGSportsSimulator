@@ -1076,3 +1076,4 @@ MonoBehaviour:
   openWindowButton: {fileID: 1847025554}
   openScriptButton: {fileID: 511172214}
   thisScript: {fileID: 11500000, guid: 5a2e4d3f095a9441688c70278068eee0, type: 3}
+  myEditedField: 54

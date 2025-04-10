@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SGSports.System
+namespace _Client.System
 {
     public static class AsyncSceneManager
     {
