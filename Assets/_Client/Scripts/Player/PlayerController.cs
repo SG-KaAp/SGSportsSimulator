@@ -15,6 +15,9 @@ namespace _Client.Player
         [SerializeField] private bool pause = true;
         [SerializeField] private GameObject grabText;
         [SerializeField] private GameObject ballPoint;
+        [SerializeField] private bool _withBall;
+        private Collider ball;
+        private FootballBall yayco;
 
         private void Awake()
         {
@@ -35,10 +38,32 @@ namespace _Client.Player
                 {
                     _animController.Play("Run");
                 }
-                if (InputHandler.FootballActions.MovementVector.ReadValue<Vector2>() == Vector2.left) transform.eulerAngles = new Vector3(0, -90, 0);
-                if (InputHandler.FootballActions.MovementVector.ReadValue<Vector2>() == Vector2.right) transform.eulerAngles = new Vector3(0, 90, 0);
-                if (InputHandler.FootballActions.MovementVector.ReadValue<Vector2>() == Vector2.up) transform.eulerAngles = new Vector3(0, 0, 0);
-                if (InputHandler.FootballActions.MovementVector.ReadValue<Vector2>() == Vector2.down) transform.eulerAngles = new Vector3(0, 180, 0);
+                if (rb.linearVelocity.z > 0) transform.eulerAngles = new Vector3(0, 0, 0);
+                if (rb.linearVelocity.z < 0) transform.eulerAngles = new Vector3(0, 180, 0);
+                if (rb.linearVelocity.x > 0) transform.eulerAngles = new Vector3(0, 90, 0);
+                if (rb.linearVelocity.x < 0) transform.eulerAngles = new Vector3(0, -90, 0);
+                if (_withBall && InputHandler.FootballActions.Jump.triggered)
+                {
+                    print("aeee");
+                    BallExit();
+                    /*if (transform.eulerAngles == new Vector3(0, 90, 0))
+                    {
+                        ball.GetComponent<Rigidbody>().AddForce(transform.forward * 750f);
+                    }
+                    if (transform.eulerAngles == new Vector3(0, -90, 0))
+                    {
+                        ball.GetComponent<Rigidbody>().AddForce(transform.forward * -1 * 750f);
+                    }
+                    if (transform.eulerAngles == new Vector3(0, 0, 0))
+                    {
+                        ball.GetComponent<Rigidbody>().AddForce(transform.right * 750f);
+                    }
+                    if (transform.eulerAngles == new Vector3(0, 180, 0))
+                    {
+                        ball.GetComponent<Rigidbody>().AddForce(transform.forward * -1 * 750f);
+                    }*/
+                    ball.GetComponent<Rigidbody>().AddForce(transform.forward * 750f);
+                }
             }
             else
             {
@@ -50,43 +75,72 @@ namespace _Client.Player
                 {
                     _animController.Play("Run");
                 }
-                if (InputHandler.FootballAltActions.MovementVector.ReadValue<Vector2>() == Vector2.left) transform.eulerAngles = new Vector3(0, -90, 0);
-                if (InputHandler.FootballAltActions.MovementVector.ReadValue<Vector2>() == Vector2.right) transform.eulerAngles = new Vector3(0, 90, 0);
-                if (InputHandler.FootballAltActions.MovementVector.ReadValue<Vector2>() == Vector2.up) transform.eulerAngles = new Vector3(0, 0, 0);
-                if (InputHandler.FootballAltActions.MovementVector.ReadValue<Vector2>() == Vector2.down) transform.eulerAngles = new Vector3(0, 180, 0);
+                if (InputHandler.FootballAltActions.MovementVector.ReadValue<Vector2>().x != 0)
+                {
+                    _animController.Play("Run");
+                }
+                if (InputHandler.FootballAltActions.MovementVector.ReadValue<Vector2>().y != 0)
+                {
+                    _animController.Play("Run");
+                }
+                if (rb.linearVelocity.z > 0) transform.eulerAngles = new Vector3(0, 0, 0);
+                if (rb.linearVelocity.z < 0) transform.eulerAngles = new Vector3(0, 180, 0);
+                if (rb.linearVelocity.x > 0) transform.eulerAngles = new Vector3(0, 90, 0);
+                if (rb.linearVelocity.x < 0) transform.eulerAngles = new Vector3(0, -90, 0);
+                if (_withBall && InputHandler.FootballAltActions.Jump.triggered)
+                {
+                    print("aeee");
+                    BallExit();
+                    /*if (transform.eulerAngles == new Vector3(0, 90, 0))
+                    {
+                        ball.GetComponent<Rigidbody>().AddForce(transform.forward * 750f);
+                    }
+                    if (transform.eulerAngles == new Vector3(0, -90, 0))
+                    {
+                        ball.GetComponent<Rigidbody>().AddForce(transform.forward * -1 * 750f);
+                    }
+                    if (transform.eulerAngles == new Vector3(0, 0, 0))
+                    {
+                        ball.GetComponent<Rigidbody>().AddForce(transform.right * 750f);
+                    }
+                    if (transform.eulerAngles == new Vector3(0, 180, 0))
+                    {
+                        ball.GetComponent<Rigidbody>().AddForce(transform.forward * -1 * 750f);
+                    }*/
+                    ball.GetComponent<Rigidbody>().AddForce(transform.forward * 750f);
+                }
             }
         }
         private void PlayerMove(Vector3 direction, float moveSpeed)
         {
             rb.linearVelocity = direction * moveSpeed + rb.linearVelocity.y * transform.up;
         }
-        public void yaycoEnter(Collider other)
+        public void BallEnter(Collider other, FootballBall sender)
         {
-            grabText.SetActive(true);
-            if (playerId == 1)
+            if (other.CompareTag("Ball"))
             {
-                if (!InputHandler.FootballActions.Jump.triggered) return;
                 other.transform.GetComponent<Rigidbody>().isKinematic = true;
                 other.transform.SetParent(ballPoint.transform);
-                print("ab");
-            }
-            if (playerId == 2)
-            {
-                if (!InputHandler.FootballAltActions.Jump.triggered) return;
-                other.transform.GetComponent<Rigidbody>().isKinematic = true;
-                other.transform.SetParent(ballPoint.transform);
-                print("ab2");
+                _withBall = true;
+                ball = other;
+                yayco = sender;
             }
         }
 
-        public void yaycoExit(Collider other)
+        public void BallExit()
         {
-            grabText.SetActive(false);
+            if (ball == null) return;
+            ball.transform.GetComponent<Rigidbody>().isKinematic = false;
+            ball.transform.SetParent(null);
+            _withBall = false;
+            yayco.afterdark();
+            //ball = null;
+            //yayco = null;
         }
-
         public void SetPause(bool value)
         {
             pause = value;
+            rb.linearVelocity = Vector3.zero;
         }
     }
 }

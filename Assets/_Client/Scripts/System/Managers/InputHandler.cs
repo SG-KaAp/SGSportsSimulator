@@ -1,3 +1,5 @@
+using UnityEngine;
+using System.Collections;
 namespace _Client.System
 {
     public static class InputHandler
@@ -28,5 +30,9 @@ namespace _Client.System
             _uiActions = _input.UI;
             _developerActions = _input.Developer;
         }
+        //private void static OnApplicationQuit()
+        //{
+        //    _input.Disable();
+        //}
     }
 }

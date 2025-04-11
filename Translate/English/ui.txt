@@ -12,3 +12,5 @@ VSync
 Anti-Aliasing
 Player One
 Player Two
+Player 1 Win!
+Player 2 Win!

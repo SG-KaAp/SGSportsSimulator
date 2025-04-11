@@ -28,6 +28,8 @@ namespace _Client.System.Managers
         [SerializeField] private GameObject ballSpawn;
         [SerializeField] private TextMeshProUGUI roundCounter;
         [SerializeField] private EventReference buzzer;
+        [SerializeField] private GameObject tablichka1;
+        [SerializeField] private GameObject tablichka2;
         private bool pause = true;
 
         private void Start()
@@ -68,29 +70,52 @@ namespace _Client.System.Managers
         {
             if (playerId == 1)
             {
-                numberGoalsPlayerOne++;
-                playerOneCounter.text = numberGoalsPlayerOne.ToString();
-                if (numberGoalsPlayerOne >= goalsToWin)
-                {
-                    print("pobeda pervogo");
-                }
-            }
-            else
-            {
                 numberGoalsPlayerTwo++;
                 playerTwoCounter.text = numberGoalsPlayerTwo.ToString();
                 if (numberGoalsPlayerTwo >= goalsToWin)
                 {
+                    print("pobeda pervogo");
+                    playerOne.SetPause(true);
+                    playerTwo.SetPause(true);
+                    tablichka2.SetActive(false);
+                    Invoke(nameof(men), 4f);
+                }
+            }
+            else
+            {
+                numberGoalsPlayerOne++;
+                playerOneCounter.text = numberGoalsPlayerOne.ToString();
+                if (numberGoalsPlayerOne >= goalsToWin)
+                {
                     print("pobeda vtorogo");
+                    playerOne.SetPause(true);
+                    playerTwo.SetPause(true);
+                    tablichka1.SetActive(true);
+                    Invoke(nameof(men), 4f);
                 }
             }
             spawnpoints();
         }
+
+        public void men()
+        {
+            AsyncSceneManager.AsyncSceneLoad("Menu");
+        }
         public void spawnpoints()
         {
+            try
+            {
+                playerOne.BallExit();
+                playerTwo.BallExit();
+            }
+            catch (Exception e)
+            {
+
+            }
             playerOne.transform.position = playerSpawnOne.transform.position;
             playerTwo.transform.position = playerSpawnTwo.transform.position;
-            ball.transform.position = ball.transform.position;
+            ball.transform.position = ballSpawn.transform.position;
+            ball.transform.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             RuntimeManager.PlayOneShot(buzzer);
         }
     }
