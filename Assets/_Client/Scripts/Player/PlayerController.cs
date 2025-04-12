@@ -1,7 +1,6 @@
 using System;
 using _Client.System;
 using DG.Tweening;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace _Client.Player
